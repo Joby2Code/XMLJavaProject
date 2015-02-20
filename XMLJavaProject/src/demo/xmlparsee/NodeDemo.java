@@ -19,7 +19,7 @@ public class NodeDemo implements Node{
 	public String getNodeValue() throws DOMException {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}//Test
 
 	@Override
 	public void setNodeValue(String nodeValue) throws DOMException {

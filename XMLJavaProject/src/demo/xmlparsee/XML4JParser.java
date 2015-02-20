@@ -16,7 +16,7 @@ public class XML4JParser {
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
 		}
-	}
+	}//Test
 
 	public static void createDisplay(Node node, String indent) {
 		if (node == null) {
