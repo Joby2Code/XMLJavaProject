@@ -1,0 +1,41 @@
+<?xml version = "1.0"?>
+<DOCUMENT>
+	<CUSTOMER TYPE="good">
+		<NAME>
+			<LAST_NAME>Thomson</LAST_NAME>
+			<FIRST_NAME>Susan</FIRST_NAME>
+		</NAME>
+		<DATE>September 1, 2001</DATE>
+		<ORDERS>
+		<ITEM>
+			<PRODUCT>Video tape</PRODUCT>
+			<NUMBER>5</NUMBER>
+			<PRICE>$1.25</PRICE>
+		</ITEM>
+		<ITEM>
+			<PRODUCT>Shovel</PRODUCT>
+			<NUMBER>2</NUMBER>
+			<PRICE>$4.98</PRICE>
+		</ITEM>
+		</ORDERS>
+	</CUSTOMER>
+	<CUSTOMER TYPE="poor">
+		<NAME>
+			<LAST_NAME>Smithson</LAST_NAME>
+			<FIRST_NAME>Nancy</FIRST_NAME>
+		</NAME>
+		<DATE>September 2, 2001</DATE>
+		<ORDERS>
+		<ITEM>
+			<PRODUCT>Ribbon</PRODUCT>
+			<NUMBER>12</NUMBER>
+			<PRICE>$2.95</PRICE>
+		</ITEM>
+		<ITEM>
+			<PRODUCT>Goldfish</PRODUCT>
+			<NUMBER>6</NUMBER>
+			<PRICE>$1.50</PRICE>
+		</ITEM>
+		</ORDERS>
+	</CUSTOMER>
+</DOCUMENT>
