@@ -37,6 +37,6 @@ public class navXML {
 	}
 
 	public static void main(String args[]) {
-		displayDocument("customers.xml");
+		displayDocument("customers1.xml");
 	}
 }
