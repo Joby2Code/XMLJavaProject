@@ -30,10 +30,10 @@ public class XML4JParser {
 			textToDisplay[nTextLines] += "<?xml version=\"1.0\" encoding=\""
 					+ "UTF-8" + "\"?>";
 			nTextLines++;
-			createDisplay(((Document) node).getDocumentElement(), "");
+			createDisplay(((Document) node).getDocumentElement(),"");//Used to give the root element of the document
 			break;
 		}
-		case Node.ELEMENT_NODE: {
+		case Node.ELEMENT_NODE: {//The root node--<Presonnal>
 			textToDisplay[nTextLines] = indent;
 			textToDisplay[nTextLines] += "<";
 			textToDisplay[nTextLines] += node.getNodeName();
@@ -42,15 +42,15 @@ public class XML4JParser {
 				numberAttributes = node.getAttributes().getLength();
 			for (int loopIndex = 0; loopIndex < numberAttributes; loopIndex++) {
 				Attr attribute = (Attr) node.getAttributes().item(loopIndex);
-				textToDisplay[nTextLines] += " ";
+				textToDisplay[nTextLines] += " ";//<Employee type
 				textToDisplay[nTextLines] += attribute.getNodeName();
-				textToDisplay[nTextLines] += "=\"";
-				textToDisplay[nTextLines] += attribute.getNodeValue();
-				textToDisplay[nTextLines] += "\"";
+				textToDisplay[nTextLines] += "=\"";//<Employee type="
+				textToDisplay[nTextLines] += attribute.getNodeValue();//<//Employee type="Permanent>
+				textToDisplay[nTextLines] += "\"";//<Employee type="Permanent"
 			}
-			textToDisplay[nTextLines] += ">";
+			textToDisplay[nTextLines] += ">";//<Employee type="Permananet">
 			nTextLines++;
-			NodeList childNodes = node.getChildNodes();
+			NodeList childNodes = node.getChildNodes();//Child Nodes of the parent node.
 			if (childNodes != null) {
 				int numberChildNodes = childNodes.getLength();
 				indent += " ";
@@ -82,7 +82,7 @@ public class XML4JParser {
 			break;
 		}
 		}
-		if (type == Node.ELEMENT_NODE) {
+		if (type == Node.ELEMENT_NODE) {//Reference to </Name>
 			textToDisplay[nTextLines] = indent
 					.substring(0, indent.length() - 1);
 			textToDisplay[nTextLines] += "</";
@@ -94,7 +94,7 @@ public class XML4JParser {
 	}
 
 	public static void main(String args[]) {
-		parseDocument("customers.xml");
+		parseDocument("employee.xml");
 		for (int loopIndex = 0; loopIndex < nTextLines; loopIndex++) {
 			System.out.println(textToDisplay[loopIndex]);
 		}
