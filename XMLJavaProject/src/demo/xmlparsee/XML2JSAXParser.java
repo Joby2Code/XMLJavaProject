@@ -1,34 +1,35 @@
 package demo.xmlparsee;
 
-import org.xml.sax.*;
+import org.*;
+import org.apache.xerces.parsers.SAXParser;
+import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
-import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 
-@SuppressWarnings("restriction")
-// import org.apache.xerces.parsers.SAXParser;
-public class XML4JSAXParser extends DefaultHandler {
-	static String textToDisplay[] = new String[1000];
+public class XML2JSAXParser extends DefaultHandler {
+	static String textToDisplay[] = new String[100];
 	static int nTextLines = 0;
 	static String indent = "";
 
+	
+
 	public static void parseDocument(String filename) {
 		try {
-			XML4JSAXParser SAXEventHandler = new XML4JSAXParser();
-			SAXParser parser = new SAXParser();
-			parser.setContentHandler(SAXEventHandler);
+			XML2JSAXParser SAXEventHandler=new XML2JSAXParser();/*The object is passed to SAX parser to know what objects call back methods to use.*/
+			SAXParser parser=new SAXParser();
+			parser.setContentHandler(SAXEventHandler);//Used to access the class methods when the parser encounters a event.
 			parser.setErrorHandler(SAXEventHandler);
-			parser.parse(filename);
 		} catch (Exception e) {
-			e.printStackTrace(System.err);
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}
+		
+		}
 
 	public void startDocument() {
 		textToDisplay[nTextLines] = indent
 				+ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 		nTextLines++;
 	}
-
 	public void startElement(String filename, String localName,
 			String qualifiedName, Attributes attributes) {
 		textToDisplay[nTextLines] = indent + "<" + qualifiedName;
@@ -46,7 +47,6 @@ public class XML4JSAXParser extends DefaultHandler {
 		textToDisplay[nTextLines] += ">";
 		nTextLines++;
 	}
-
 	public void characters(char textChars[], int textStart, int textLength) {//textChars[] has all the elements stored as character in the main method
 		String textData = (new String(textChars, textStart, textLength));
 		textData = textData.trim();
@@ -56,42 +56,8 @@ public class XML4JSAXParser extends DefaultHandler {
 			nTextLines++;
 		}
 	}
-
-	public void endElement(String filename, String localName,
-			String qualifiedName) {
-		indent = indent.substring(0, indent.length() - 1);
-		
-		textToDisplay[nTextLines] = indent + "</" + qualifiedName + ">";
-		nTextLines++;
-		//System.out.println(indent.length());
-	}
-
-	public void processingInstruction(String PIName, String PIData) {
-		textToDisplay[nTextLines] = indent + "<?" + PIName;
-		if (PIData != null && PIData.length() > 0) {
-			textToDisplay[nTextLines] += " ";
-			textToDisplay[nTextLines] += PIData;
-		}
-		textToDisplay[nTextLines] += "?>";
-		nTextLines++;
-	}
-
-	public void warning(SAXParseException e) {
-		System.err.println("SAX warning: " + e.getMessage());
-	}
-
-	public void error(SAXParseException e) {
-		System.err.println("SAX error: " + e.getMessage());
-		System.exit(1);
-	}
-
-	public void fatalError(SAXParseException e) {
-		System.err.println("Fatal SAX error: " + e.getMessage());
-		System.exit(1);
-	}
-
 	public static void main(String args[]) {
-		parseDocument("employee.xml");
+		parseDocument("customers.xml");
 		for (int index = 0; index < nTextLines; index++) {
 			System.out.println(textToDisplay[index]);
 		}

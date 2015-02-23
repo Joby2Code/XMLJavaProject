@@ -88,7 +88,7 @@ public class JAXPSAXParser extends DefaultHandler{
 		System.exit(1);
 	}
 	public static void main(String args[]) {
-		parseDocument(args[0]);
+		parseDocument("customers.xml");
 		for(int index = 0; index < nTextLines; index++){
 			System.out.println(textToDisplay[index]);
 		}
